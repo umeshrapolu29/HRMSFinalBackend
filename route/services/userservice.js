@@ -1096,6 +1096,7 @@ module.exports.uploadpayslips=((req,res)=>{
       })
       module.exports.geteducationaldetails=((req,res)=>{
         var empname=req.body.empname;
+        console.log(empname+"empname");
 
         userRepo.geteducationaldetails({empname:empname},(err,data)=>{
           if(data){

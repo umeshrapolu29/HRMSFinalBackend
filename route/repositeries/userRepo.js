@@ -662,20 +662,20 @@ module.exports.personaldetails=(empname,primaryemailid,secondaryemailid,gaurdain
 
 }
 module.exports.geteducationaldetails=(empname,callback)=>{
-    educationalschema.find({"empname":{$ne:null}}).then(result=>{
-        var regid=Object.keys(result).length;
-         var rid=regid-1;
-        console.log(regid+"result is");
+    // educationalschema.find({"empname":{$ne:null}}).then(result=>{
+    //     var regid=Object.keys(result).length;
+    //      var rid=regid-1;
+    //     console.log(regid+"result is");
     
-        educationalschema.findOne({'rig':{$eq:rid},"empname":empname.empname}).then(result=>{
+        educationalschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
         callback(null,result);
-        console.log(result.data);
+        console.log(result);
     }).catch(error=>{
         callback(null,error);
     })
-}).catch(error=>{
-    callback(null,error);
-})
+// }).catch(error=>{
+//     callback(null,error);
+// })
 
 }
 module.exports.getbankldetails=(empname,callback)=>{
