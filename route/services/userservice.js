@@ -1073,11 +1073,13 @@ module.exports.uploadpayslips=((req,res)=>{
         var empname=req.body.empname;
         var primaryemailid=req.body.primaryemailid;
         var secondaryemailid=req.body.secondaryemailid;
+        var primaryphone=req.body.primaryphone;
+        var secondaryphone=req.body.secondaryphone;
         var gaurdain=req.body.gaurdain; 
         var gaurdainnumber=req.body.gaurdainnumber
         
-        console.log(empname,primaryemailid,secondaryemailid,gaurdain,gaurdainnumber+"at service")
-        userRepo.personaldetails({empname:empname},{primaryemailid:primaryemailid},{secondaryemailid:secondaryemailid},{gaurdain:gaurdain},{gaurdainnumber:gaurdainnumber},(err,data)=>{
+        console.log(empname,primaryemailid,secondaryemailid,primaryphone,secondaryphone,gaurdain,gaurdainnumber+"at service")
+        userRepo.personaldetails({empname:empname},{primaryemailid:primaryemailid},{secondaryemailid:secondaryemailid},{primaryphone:primaryphone},{secondaryphone:secondaryphone},{gaurdain:gaurdain},{gaurdainnumber:gaurdainnumber},(err,data)=>{
           if(data){
             res.json({
               "msg":"data inserted",

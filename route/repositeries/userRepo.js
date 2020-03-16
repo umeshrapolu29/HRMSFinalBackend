@@ -633,7 +633,7 @@ module.exports.companydetails=(empname,companyname,designation,experiance,callba
 })
 
 }
-module.exports.personaldetails=(empname,primaryemailid,secondaryemailid,gaurdain,gaurdainnumber,callback)=>{
+module.exports.personaldetails=(empname,primaryemailid,secondaryemailid,primaryphone,secondaryphone,gaurdain,gaurdainnumber,callback)=>{
     console.log(empname,primaryemailid,secondaryemailid,gaurdainnumber+"at repo")
     personaldetailsschema.find({"empname":{$ne:null}}).then(result=>{
         var regid=Object.keys(result).length;
@@ -642,6 +642,8 @@ module.exports.personaldetails=(empname,primaryemailid,secondaryemailid,gaurdain
     empname:empname.empname,
     primaryemailid:primaryemailid.primaryemailid,
     secondaryemailid:secondaryemailid.secondaryemailid,
+    primaryphone:primaryphone.primaryphone,
+    secondaryphone:secondaryphone.secondaryphone,
     gaurdain:gaurdain.gaurdain,
     gaurdainnumber:gaurdainnumber.gaurdainnumber,
     rig:regid
@@ -683,9 +685,10 @@ module.exports.getbankldetails=(empname,callback)=>{
     //     var regid=Object.keys(result).length;
     //      var rid=regid-1;
     //     console.log(regid+"result is");
+    console.log(empname+"at repo")
         bankdetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
         callback(null,result);
-        console.log(result.data);
+        console.log(result);
     }).catch(error=>{
         callback(null,error);
     })
@@ -709,17 +712,17 @@ module.exports.getcompanydetails=(empname,callback)=>{
 })
 }
 module.exports.getpersonaldetails=(empname,callback)=>{
-    personaldetailsschema.find({"empname":{$ne:null}}).then(result=>{
-        var regid=Object.keys(result).length;
-         var rid=regid-1;
-        console.log(regid+"result is");
-        personaldetailsschema.findOne({'rig':{$eq:rid},"empname":empname.empname}).then(result=>{
+    // personaldetailsschema.find({"empname":{$ne:null}}).then(result=>{
+    //     var regid=Object.keys(result).length;
+    //      var rid=regid-1;
+    //     console.log(regid+"result is");
+        personaldetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
         callback(null,result);
         console.log(result.data);
     }).catch(error=>{
         callback(null,error);
     })
-}).catch(error=>{
-    callback(null,error);
-})
+// }).catch(error=>{
+//     callback(null,error);
+// })
 }
