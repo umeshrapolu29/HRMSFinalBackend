@@ -679,19 +679,19 @@ module.exports.geteducationaldetails=(empname,callback)=>{
 
 }
 module.exports.getbankldetails=(empname,callback)=>{
-    bankdetailsschema.find({"empname":{$ne:null}}).then(result=>{
-        var regid=Object.keys(result).length;
-         var rid=regid-1;
-        console.log(regid+"result is");
-        bankdetailsschema.findOne({'rig':{$eq:rid},"empname":empname.empname}).then(result=>{
+    // bankdetailsschema.find({"empname":{$ne:null}}).then(result=>{
+    //     var regid=Object.keys(result).length;
+    //      var rid=regid-1;
+    //     console.log(regid+"result is");
+        bankdetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
         callback(null,result);
         console.log(result.data);
     }).catch(error=>{
         callback(null,error);
     })
-}).catch(error=>{
-    callback(null,error);
-})
+// }).catch(error=>{
+//     callback(null,error);
+// })
 }
 module.exports.getcompanydetails=(empname,callback)=>{
     companydetailsschema.find({"empname":{$ne:null}}).then(result=>{
