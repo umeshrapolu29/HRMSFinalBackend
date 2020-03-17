@@ -143,7 +143,7 @@ module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,nam
       from: 'sampathkumar0078@gmail.com',
       to: reportmanager,nexttoreportmanager,
       cc:hrmanager,
-      subject: 'Leave request from '+name,
+      subject: 'Leave request from '+reqname1,
       
       
       text: 'Dear  '+reqname1+','+('\n\n')+ 'Please grant me the '+reqtype1+' leave for the reason of '+reason1+' from the date '+fromdate1+' to '+todate1+'.'+('\n\n')+ 'Thanks and regards.'+('\n\n')+reqname1+'.'
