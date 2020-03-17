@@ -716,7 +716,7 @@ module.exports.getpersonaldetails=(empname,callback)=>{
     //     var regid=Object.keys(result).length;
     //      var rid=regid-1;
     //     console.log(regid+"result is");
-        personaldetailsschema.find({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
+        personaldetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
         callback(null,result);
         console.log(result);
     }).catch(error=>{
