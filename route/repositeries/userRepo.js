@@ -86,7 +86,23 @@ module.exports.getuserdata=(email,callback)=>{
 }
 // Leave Request.........................
 module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,name,callback)=>{
-    leaverequestschema.find({"requestto":{$ne:null}}).then(result=>{
+    console.log(requestto+"at repo");
+
+    uploadschema.find({"email":requestto.requestto}).then(result=>{
+
+        var reportmanager=result[0]. reportmanager
+        var nexttoreportmanager=result[0]. immediatereportmanager
+        var hrmanager=result[0]. HRmanager
+        console.log(reportmanager,nexttoreportmanager,hrmanager+"managers")
+
+
+        console.log(result[0].firstname)
+    // callback(null,result);
+    console.log(result);
+
+
+
+        leaverequestschema.find({"requestto":{$ne:null}}).then(result=>{
         var regid=Object.keys(result).length;
         console.log(regid+"result is");
     var reg=new leaverequestschema({
@@ -101,7 +117,54 @@ module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,nam
        
     })
     reg.save().then(result=>{
+        console.log("inside function");
         callback(null,result);
+        console.log(result);
+    
+        var reqtype1=result.reqtype;
+        var reason1=result.reason;
+        var fromdate1=result.fromdate;
+        var todate1=result.todate;
+        var reqname1=result.name;
+        console.log(reqtype,reqname1+"details");
+
+
+
+
+            var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user:'sandeep.reddy@zyclyx.com',
+        pass: 'cweaaodfhejidcga'
+      }
+    });
+    
+    var mailOptions = {
+      from: 'sampathkumar0078@gmail.com',
+      to: reportmanager,
+      cc:reportmanager,
+      subject: 'Leave request from '+name,
+      
+      
+      text: 'Dear  '+reqname1+','+('\n\n')+ 'Please grant me the '+reqtype1+' leave for the reason of '+reason1+' from the date '+fromdate1+' to '+todate1+'.'+('\n\n')+ 'Thanks and regards.'+('\n\n')+reqname1+'.'
+      
+  };
+   // console.log(details.title,details.description+"notice details")
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent for Leave request: ' + info.response);
+      }
+    });
+
+
+
+
+
+
+
+
     }).catch(error=>{
         callback(null,error);
     }).catch(error=>{
@@ -110,6 +173,18 @@ module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,nam
 
 
 })
+
+
+
+   
+    
+})
+.catch(error=>{
+    callback(null,error)
+})
+
+
+
 }
 module.exports.getleaveemployee=(callback)=>{
 

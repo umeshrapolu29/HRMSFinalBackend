@@ -156,33 +156,34 @@ var storage = multer.diskStorage({
     var fromdate=req.body.fromdate;
     var todate=req.body.todate;
     var name=req.body.name;
-    console.log(user,password+"user password");
+    console.log(requestto+"at service")
+    // console.log(user,password+"user password");
     console.log(reason,reqtype,requestto,fromdate,todate,emailto1,name+"at service");
-    var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user:'sandeep.reddy@zyclyx.com',
-        pass: 'cweaaodfhejidcga'
-      }
-    });
+  //   var transporter = nodemailer.createTransport({
+  //     service: 'gmail',
+  //     auth: {
+  //       user:'sandeep.reddy@zyclyx.com',
+  //       pass: 'cweaaodfhejidcga'
+  //     }
+  //   });
     
-    var mailOptions = {
-      from: 'sampathkumar0078@gmail.com',
-      to: 'salma.k@zyclyx.com',
-      subject: 'Leave request from '+name,
+  //   var mailOptions = {
+  //     from: 'sampathkumar0078@gmail.com',
+  //     to: 'salma.k@zyclyx.com',
+  //     subject: 'Leave request from '+name,
       
       
-      text: 'Dear  '+emailto1+','+('\n\n')+ 'Please grant me the '+reqtype+' leave for the reason of '+reason+' from the date '+fromdate+' to '+todate+'.'+('\n\n')+ 'Thanks and regards.'+('\n\n')+name+'.'
+  //     text: 'Dear  '+emailto1+','+('\n\n')+ 'Please grant me the '+reqtype+' leave for the reason of '+reason+' from the date '+fromdate+' to '+todate+'.'+('\n\n')+ 'Thanks and regards.'+('\n\n')+name+'.'
       
-  };
-   // console.log(details.title,details.description+"notice details")
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent for Leave request: ' + info.response);
-      }
-    });
+  // };
+  //  // console.log(details.title,details.description+"notice details")
+  //   transporter.sendMail(mailOptions, function(error, info){
+  //     if (error) {
+  //       console.log(error);
+  //     } else {
+  //       console.log('Email sent for Leave request: ' + info.response);
+  //     }
+  //   });
 
 
 
