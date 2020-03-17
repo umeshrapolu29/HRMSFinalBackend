@@ -23,6 +23,7 @@ var uploadschema=uploadschema({
     resgination:{type:String},
     reportmanager:{type:String},
     immediatereportmanager:{type:String},
+    HRmanager:{type:String},
    
    
       

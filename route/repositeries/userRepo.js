@@ -13,7 +13,7 @@ var educationalschema=require('../Model/educationalschema');
 var bankdetailsschema=require('../Model/bankdetailsschema');
 var companydetailsschema=require('../Model/companydetailsschema');
  var personaldetailsschema=require('../Model/personaldetailschema');
-module.exports.upload=(firstname,lastname, email,password,file,DOJ,phonenumber,gender,DOB,resgination,reportmanager,nextimmediatemanager,callback)=>{
+module.exports.upload=(firstname,lastname, email,password,file,DOJ,phonenumber,gender,DOB,resgination,reportmanager,nextimmediatemanager,hrmanager,callback)=>{
     console.log(firstname,lastname,resgination+"at repo")
     uploadschema.find({"email":{$ne:null}}).then(result=>{
         var today = new Date();
@@ -38,7 +38,8 @@ module.exports.upload=(firstname,lastname, email,password,file,DOJ,phonenumber,g
         resgination:resgination.resgination,
         fullid:fullid,
         reportmanager:reportmanager.reportmanager,
-        immediatereportmanager:nextimmediatemanager.nextimmediatemanager
+        immediatereportmanager:nextimmediatemanager.nextimmediatemanager,
+        HRmanager:hrmanager.hrmanager
 
       
      
