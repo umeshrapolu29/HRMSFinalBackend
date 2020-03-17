@@ -141,8 +141,8 @@ module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,nam
     
     var mailOptions = {
       from: 'sampathkumar0078@gmail.com',
-      to: reportmanager,
-      cc:reportmanager,
+      to: reportmanager,nexttoreportmanager,
+      cc:hrmanager,
       subject: 'Leave request from '+name,
       
       
