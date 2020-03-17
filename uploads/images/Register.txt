@@ -1,0 +1,66 @@
+<label>10+2 Details</label>
+					
+                    <div class="row">
+                            <div class="col-lg-6">
+                                    <label> District</label>
+                                <select id="ddlInterDistrict" ng-model="InterDistrict" name="InterDistrict" class="form-control">
+                            <option value="0">district</option>
+                            <option value="1">warangal</option>
+                            <option value="2">krishna</option>
+                        </select></div>
+                        <div class="col-lg-6">
+                                <label>Board</label>
+                
+                                
+                                <select id="ddlInterBoard" ng-model="InterBoard" name="InterBoard" class="form-control">
+                                        <option value="0">Select</option>
+                                        <option value="1">Intermediate Board Of Eduacation</option>
+                                        <option value="2">Other</option>
+                                    </select>
+                            </div>
+                        
+                        </div><br>
+                        <div class="row">
+                                <div class="col-lg-6">
+                                        <label>College Name</label>
+                                    <select id="ddlInterCollege" ng-model="InterCollege" name="InterCollege" class="form-control">
+                                <option value="0">Select</option>
+                                <option value="1">Sri Chaitanya junior college</option>
+                                <option value="2"> Narayana junior college</option>
+                                <option value="3">Other</option>
+                            </select></div>
+                            <div class="col-lg-6">
+                                    <label>Group</label>
+                
+                                
+                                    <select id="ddlInterGroup" ng-model="InterGroup" name="InterGroup" class="form-control">
+                                            <option value="0">Select</option>
+                                            <option value="1">MPC</option>
+                                            <option value="2">Other</option>
+                                        </select>
+                                </div>
+                            
+                            </div><br>
+                            <div class="row" >
+                                    <div class="col-lg-4">
+                                        <label  >Hall Ticket Number</label>
+                                        <input type="text"  ng-model="InterHTNO" name="InterHTNO"   class="form-control" placeholder="Enter Hall ticket NUmber" autocomplete="off" >
+                                    </div>
+                                    <br >
+                                    
+                                    <div class="col-lg-4">
+                                            <label>Date of Pass :</label>
+                                            <input type="date" name="InterDOP" ng-model="InterDOP"  class="form-control" autocomplete="off" >
+                                        </div>
+                                       
+                                    <div class="col-lg-4"  >
+                                        <label  >Percentage</label>
+                                        <input type="text" name="InterPerc" ng-model="InterPerc" class="form-control" placeholder="Enter Percentage" autocomplete="off" >
+                                    </div>
+                                </div>
+                                <br>
+                                <label required="">Upload Study Certificate</label>
+            
+                                        <input type="file" ng-model="InterSC" name="InterSC" class="form-control"  >
+                                        
+                                <br>

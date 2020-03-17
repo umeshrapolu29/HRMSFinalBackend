@@ -287,6 +287,17 @@ module.exports.viewnotice=(req,callback)=>{
 }
 
 module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email,employeename,callback)=>{
+
+    uploadschema.find({"email":email.email}).then(result=>{
+
+        console.log(result);
+        var reportmanager=result[0]. reportmanager
+        var nexttoreportmanager=result[0]. immediatereportmanager
+        var hrmanager=result[0]. HRmanager
+        console.log(reportmanager,nexttoreportmanager,hrmanager+"managers")
+
+
+
     console.log(item,description,amount,file,status,astatus,email,employeename+"at repo")
     iprocurementschema.find({"email":{$ne:null}}).then(result=>{
         var regid=Object.keys(result).length;
@@ -314,6 +325,50 @@ module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email
      reg.save().then(result=>{
          callback(null,result);
          console.log(result);
+          var item1=result.item;
+          var empname=result.employeename;
+          var description1=result.description;
+          var amount1=result.amount;
+          console.log(item1,empname,description1,amount1+"details");
+
+
+               var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user:'sandeep.reddy@zyclyx.com',
+          pass: 'cweaaodfhejidcga'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'sampathkumar0078@gmail.com',
+        to: reportmanager,nexttoreportmanager,
+        cc:hrmanager,
+        subject:'Reimbursement request from '+empname+',',
+        
+        
+        text: 'Dear manager'+('\n')+'Please approve me the reimbursement request for the item is '+item1+' for the purpose of '+description1+' and the amount of this item is '+amount1+'.'+('\n')+'Thanks and regards.'+('\n')+empname+'.'
+        
+    };
+      //console.log(details.title,details.description+"notice details")
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent for update leave status111: ' + info.response);
+          res.send("success")
+        }
+      });
+    
+    
+
+
+
+
+    
+
+
+
      }).catch(error=>{
          callback(null,error);
      })
@@ -322,6 +377,10 @@ module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email
        })
 
  
+})
+})
+.catch(error=>{
+    callback(null,error)
 })
 }
 module.exports.getusernamesiprocurement=(astatus,callback)=>{
