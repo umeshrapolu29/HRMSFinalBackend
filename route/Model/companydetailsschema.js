@@ -6,7 +6,7 @@ var companydetailsschema=companydetailsschema({
     companyname :{type:String},
     designation:{type:String},
     experience:{type:String},
-    rig:{type:String},
+    rig:{type:Number},
     
 
    

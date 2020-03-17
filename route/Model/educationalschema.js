@@ -7,7 +7,7 @@ var educationalchema=educationalchema({
     intermediate:{type:String},
     degree:{type:String},
     pg:{type:String},
-    rig:{type:String},
+    rig:{type:Number},
    
     
 })

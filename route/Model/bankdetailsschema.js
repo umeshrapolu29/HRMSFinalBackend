@@ -10,7 +10,7 @@ var bankdetailsschema=bankdetailsschema({
     pannumber:{type:String},
     branch:{type:String},
     IFSCcode:{type:String},
-    rig:{type:String},
+    rig:{type:Number},
    
 
    
