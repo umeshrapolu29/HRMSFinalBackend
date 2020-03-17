@@ -59,9 +59,11 @@ var storage = multer.diskStorage({
         var gender=req.body.gender;
         var DOB=req.body.DOB;   
         var resgination=req.body.resgination
+        var reportmanager=req.body.reportmanager
+        var nextimmediatemanager=req.body.nextimmediatemanager
 
       console.log(lastname,firstname,password,gender,file,DOJ,DOB,phonenumber,resgination+"at service")
-      userRepo.upload({firstname:firstname},{lastname:lastname},{email:email},{password:password},{file:file},{DOJ:DOJ},{phonenumber:phonenumber},{gender:gender},{DOB:DOB},{resgination:resgination},(err,data)=>{
+      userRepo.upload({firstname:firstname},{lastname:lastname},{email:email},{password:password},{file:file},{DOJ:DOJ},{phonenumber:phonenumber},{gender:gender},{DOB:DOB},{resgination:resgination},{reportmanager:reportmanager},{nextimmediatemanager:nextimmediatemanager},(err,data)=>{
         if(data){
         res.json({
               "msg":"uploaded Successfull",
