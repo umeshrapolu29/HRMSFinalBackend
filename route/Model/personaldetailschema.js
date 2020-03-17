@@ -9,7 +9,7 @@ var personaldetailsschema=personaldetailsschema({
     secondaryphone :{type:String},
     gaurdain:{type:String},
     gaurdainnumber:{type:String},
-    rig:{type:String},
+    rig:{type:Number},
     
 
    

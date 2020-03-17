@@ -694,7 +694,7 @@ module.exports.getbankldetails=(empname,callback)=>{
     })
 // }).catch(error=>{
 //     callback(null,error);
-// })
+// }) 
 }
 module.exports.getcompanydetails=(empname,callback)=>{
     companydetailsschema.find({"empname":{$ne:null}}).then(result=>{
@@ -716,9 +716,9 @@ module.exports.getpersonaldetails=(empname,callback)=>{
     //     var regid=Object.keys(result).length;
     //      var rid=regid-1;
     //     console.log(regid+"result is");
-        personaldetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
+        personaldetailsschema.find({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
         callback(null,result);
-        console.log(result.data);
+        console.log(result);
     }).catch(error=>{
         callback(null,error);
     })
