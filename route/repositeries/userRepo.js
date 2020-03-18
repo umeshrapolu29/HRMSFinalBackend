@@ -298,6 +298,11 @@ module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email
         var reportmanager=result[0]. reportmanager
         var nexttoreportmanager=result[0]. immediatereportmanager
         var hrmanager=result[0]. HRmanager
+        var maillist = [
+            reportmanager,
+            nexttoreportmanager,
+           
+          ];
         console.log(reportmanager,nexttoreportmanager,hrmanager+"managers")
 
 
@@ -346,7 +351,7 @@ module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email
       
       var mailOptions = {
         from: 'sampathkumar0078@gmail.com',
-        to: reportmanager,nexttoreportmanager,
+        to: maillist,
         cc:hrmanager,
         subject:'Reimbursement request from '+empname+',',
         
