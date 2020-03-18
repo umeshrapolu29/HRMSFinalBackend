@@ -94,7 +94,11 @@ module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,nam
         var nexttoreportmanager=result[0]. immediatereportmanager
         var hrmanager=result[0]. HRmanager
         console.log(reportmanager,nexttoreportmanager,hrmanager+"managers")
-
+        var maillist = [
+            reportmanager,
+            nexttoreportmanager,
+           
+          ];
 
         console.log(result[0].firstname)
     // callback(null,result);
@@ -141,7 +145,7 @@ module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,nam
     
     var mailOptions = {
       from: 'sampathkumar0078@gmail.com',
-      to: reportmanager,nexttoreportmanager,
+      to: maillist,
       cc:hrmanager,
       subject: 'Leave request from '+reqname1,
       
