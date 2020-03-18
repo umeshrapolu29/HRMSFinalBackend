@@ -555,7 +555,7 @@ module.exports.updatestatusiprocuremnt=((req,res)=>{
         subject: 'Reimbursement status',
         
         
-        text: 'Dear '+name+','+('\n')+'Your reimbursement request has been '+astatus+'.'+('\n')+'Thanks and regards.'+('\n')+'Zyclyx'+'.'
+        text: 'Dear '+name+','+('\n')+'Your reimbursement request has been '+astatus+'.'+('\n')+'Thanks and regards.'+('\n')+'HR Operations'+'.'
         
     };
       //console.log(details.title,details.description+"notice details")
@@ -668,7 +668,7 @@ module.exports.uploadpayslips=((req,res)=>{
       subject: 'Uploaded Payslip',
       
       
-      text: 'Dear '+email+','+'\n'+'Please find the attached payslip for the month of '+month+'-'+year+''+'\n'+'Thanks and regards.'+('\n')+'Zyclyx'+'.',
+      text: 'Dear '+email+','+'\n'+'Please find the attached payslip for the month of '+month+'-'+year+''+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
        attachments: [{ filename: resume, content: fs.createReadStream(`./uploads/images/${resume}`) }]
       
   };
