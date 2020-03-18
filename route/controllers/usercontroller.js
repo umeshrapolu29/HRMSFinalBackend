@@ -138,4 +138,7 @@ route.post('/getcompanydetails',upload.single('file'),(req,res)=>{
 route.post('/getpersonaldetails',upload.single('file'),(req,res)=>{
   return userservice.getpersonaldetails(req,res);
 })
+route.post('/editprofiledetails',upload.single('file'),(req,res)=>{
+  return userservice
+})
  module.exports=route;
