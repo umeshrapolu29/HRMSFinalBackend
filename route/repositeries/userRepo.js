@@ -248,7 +248,14 @@ module.exports.viewholiday=(holidaytype,callback)=>{
     })
 }
 module.exports.addnotice=(date,title,description,file,callback)=>{
+    uploadschema.find({}).then(result=>{
+        callback(null,result);
+        console.log(result.data)
+    
     var regid=1;
+
+
+
     noticeboardschema.find({"title":{$ne:null}}).then(result=>{
          regid=regid+Object.keys(result).length;
         
@@ -271,6 +278,13 @@ module.exports.addnotice=(date,title,description,file,callback)=>{
 
 
 })
+})
+.catch(error=>{
+    callback(null,error)
+})
+
+
+
 }
 module.exports.removenotice=(title,callback)=>{
     noticeboardschema.remove({"title":title.title}).then(result=>{
