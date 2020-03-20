@@ -377,7 +377,7 @@ module.exports.addnotice=((req,res)=>{
       var file= 'https://hrmsbackend.herokuapp.com/images/'+ req.file.originalname;
 
    }
-  console.log(date,title,description,file+"at service");
+  // console.log(date,title,description,file+"at service");
   userRepo.addnotice({date:date},{title:title},{description:description},{file:file},(err,data)=>{
     if(data){
       res.json({
@@ -1177,14 +1177,46 @@ module.exports.uploadpayslips=((req,res)=>{
           }
         })
       })
+      // module.exports.profiledetails=((req,res)=>{
+      //   var empname=req.body.empname;
+      //   var tenth=req.body.tenth;
+      //   var intermediate=req.body.intermediate;
+      //   var degree=req.body.degree;
+      //   var pg=req.body.pg
+      //   console.log(tenth,intermediate,degree,pg+"at service")
+      //   userRepo.profiledetails({empname:empname},{tenth:tenth},{intermediate:intermediate},{degree:degree},{pg:pg},(err,data)=>{
+      //     if(data){
+      //       res.json({
+      //         "msg":"data inserted",
+      //         "data":data
+      //       })
+            
+      //     }
+      //     else{
+      //       res.json({
+      //         "msg":"data  not inserted",
+      //         "data":err
+      //       })
+      //     }
+      //   })
+
+      // })
+
       module.exports.profiledetails=((req,res)=>{
         var empname=req.body.empname;
-        var tenth=req.body.tenth;
-        var intermediate=req.body.intermediate;
-        var degree=req.body.degree;
-        var pg=req.body.pg
-        console.log(tenth,intermediate,degree,pg+"at service")
-        userRepo.profiledetails({empname:empname},{tenth:tenth},{intermediate:intermediate},{degree:degree},{pg:pg},(err,data)=>{
+        var fullname=req.body.fullname;
+        var DOB=req.body.DOB;
+        var DOJ=req.body.DOJ;
+        var gender=req.body.gender;
+        var email=req.body.email; 
+        var phone=req.body.phone
+        var reportingmanager=req.body.reportingmanager;
+        var nextreportingmanager=req.body.nextreportingmanager; 
+        var hrmanager=req.body.hrmanager
+        
+        // console.log(empname,primaryemailid,secondaryemailid,primaryphone,secondaryphone,gaurdain,gaurdainnumber+"at service")
+        console.log(fullname,DOB,DOJ,gender,email,phone,reportingmanager,nextreportingmanager,hrmanager+"at service")
+        userRepo.profiledetails({empname:empname},{fullname:fullname},{DOB:DOB},{DOJ:DOJ},{gender:gender},{email:email},{phone:phone},{reportingmanager:reportingmanager},{nextreportingmanager:nextreportingmanager},{hrmanager:hrmanager},(err,data)=>{
           if(data){
             res.json({
               "msg":"data inserted",
@@ -1200,4 +1232,23 @@ module.exports.uploadpayslips=((req,res)=>{
           }
         })
 
+      })
+      module.exports.getprofiledetails=((req,res)=>{
+        var empname=req.body.empname;
+
+        userRepo.getprofiledetails({empname:empname},(err,data)=>{
+          if(data){
+           res.json({
+             "msg":"get data",
+             "data":data
+           })
+
+          }
+          else{
+            res.json({
+              "msg":"get data",
+              "data":err
+            })
+          }
+        })
       })

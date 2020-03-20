@@ -13,6 +13,9 @@ var educationalschema=require('../Model/educationalschema');
 var bankdetailsschema=require('../Model/bankdetailsschema');
 var companydetailsschema=require('../Model/companydetailsschema');
  var personaldetailsschema=require('../Model/personaldetailschema');
+  var profiledetailsschema=require('../Model/profiledetailsschema');
+  
+
 module.exports.upload=(firstname,lastname, email,password,file,DOJ,phonenumber,gender,DOB,resgination,reportmanager,nextimmediatemanager,hrmanager,callback)=>{
     console.log(firstname,lastname,resgination+"at repo")
     uploadschema.find({"email":{$ne:null}}).then(result=>{
@@ -250,7 +253,7 @@ module.exports.viewholiday=(holidaytype,callback)=>{
 module.exports.addnotice=(date,title,description,file,callback)=>{
     uploadschema.find({}).then(result=>{
         callback(null,result);
-        console.log(result.data)
+        console.log(result.data[0].email)
     
     var regid=1;
 
@@ -876,6 +879,53 @@ module.exports.getpersonaldetails=(empname,callback)=>{
     //      var rid=regid-1;
     //     console.log(regid+"result is");
         personaldetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
+        callback(null,result);
+        console.log(result);
+    }).catch(error=>{
+        callback(null,error);
+    })
+// }).catch(error=>{
+//     callback(null,error);
+// })
+}
+
+module.exports.profiledetails=(empname,fullname,DOB,DOJ,gender,email,phone,reportingmanager,nextreportingmanager,hrmanager,callback)=>{
+     console.log(empname,fullname,DOB,DOJ+"at repo")
+    profiledetailsschema.find({"empname":{$ne:null}}).then(result=>{
+        var regid=Object.keys(result).length;
+        console.log(regid+"result is");
+   var reg=new profiledetailsschema({
+    empname:empname.empname,
+    fullname:fullname.fullname,
+    DOB:DOB.DOB,
+    DOJ:DOJ.DOJ,
+    gender:gender.gender,
+    email:email.email,
+    phone:phone.phone,
+    reportingmanager:reportingmanager.reportingmanager,
+    nextreportingmanager:nextreportingmanager.nextreportingmanager,
+    hrmanager:hrmanager.hrmanager,
+    rig:regid
+   })
+    reg.save().then(result=>{
+        callback(null,result);
+        console.log(result)
+    }).catch(error=>{
+        console.log("error")
+        callback(null,error);
+        
+    })
+}).catch(error=>{
+    callback(null,error);
+})
+}
+
+module.exports.getprofiledetails=(empname,callback)=>{
+    // personaldetailsschema.find({"empname":{$ne:null}}).then(result=>{
+    //     var regid=Object.keys(result).length;
+    //      var rid=regid-1;
+    //     console.log(regid+"result is");
+    profiledetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
         callback(null,result);
         console.log(result);
     }).catch(error=>{

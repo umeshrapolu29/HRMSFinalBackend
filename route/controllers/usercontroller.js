@@ -139,6 +139,12 @@ route.post('/getpersonaldetails',upload.single('file'),(req,res)=>{
   return userservice.getpersonaldetails(req,res);
 })
 route.post('/editprofiledetails',upload.single('file'),(req,res)=>{
-  return userservice
+  return userservice.profiledetails(req,res);
+})
+// route.post('/getprofiledetails',upolad.single('file'),(req,res)=>{
+//   return username.getprofiledetails(req,res);
+// })
+route.post('/getprofiledetails',upload.single('file'),(req,res)=>{
+  return userservice.getprofiledetails(req,res);
 })
  module.exports=route;
