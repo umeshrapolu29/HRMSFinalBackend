@@ -309,14 +309,15 @@ module.exports.viewnotice=(req,callback)=>{
     })
 }
 
-module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email,employeename,callback)=>{
+module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email,employeename,empname,callback)=>{
+    console.log(empname+"empname")
 
-    uploadschema.find({"email":email.email}).then(result=>{
+    profiledetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
 
-        console.log(result);
-        var reportmanager=result[0]. reportmanager
-        var nexttoreportmanager=result[0]. immediatereportmanager
-        var hrmanager=result[0]. HRmanager
+         console.log(result);
+        var reportmanager=result. reportingmanager;
+        var nexttoreportmanager=result. nextreportingmanager;
+        var hrmanager=result. hrmanager;
         var maillist = [
             reportmanager,
             nexttoreportmanager,
@@ -326,7 +327,7 @@ module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email
 
 
 
-    console.log(item,description,amount,file,status,astatus,email,employeename+"at repo")
+    // console.log(item,description,amount,file,status,astatus,email,employeename+"at repo")
     iprocurementschema.find({"email":{$ne:null}}).then(result=>{
         var regid=Object.keys(result).length;
         console.log(regid+"result is");
