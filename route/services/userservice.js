@@ -150,6 +150,7 @@ var storage = multer.diskStorage({
   module.exports.leaverequest=((req,res)=>{
     var emailto1=req.body.emailto;
     var reason=req.body.reason;
+    var empname=req.body.empname
     var reqtype=req.body.reqtype;
     var requestto=req.body.requestto;
     var status="NOT YET APPROVED";
@@ -187,7 +188,7 @@ var storage = multer.diskStorage({
 
 
 
-    userRepo.leaverequest({reason:reason},{reqtype:reqtype},{requestto:requestto},{status:status},{fromdate:fromdate},{todate:todate},{name:name},(err,data)=>{
+    userRepo.leaverequest({reason:reason},{reqtype:reqtype},{requestto:requestto},{status:status},{fromdate:fromdate},{todate:todate},{name:name},{empname:empname},(err,data)=>{
       res.json({
         "msg":"leave request data inserted",
         "data":data
@@ -1195,7 +1196,7 @@ module.exports.uploadpayslips=((req,res)=>{
       //     else{
       //       res.json({
       //         "msg":"data  not inserted",
-      //         "data":err
+      //         "data": err
       //       })
       //     }
       //   })

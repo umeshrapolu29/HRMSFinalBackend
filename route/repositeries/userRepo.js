@@ -88,25 +88,27 @@ module.exports.getuserdata=(email,callback)=>{
 
 }
 // Leave Request.........................
-module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,name,callback)=>{
-    console.log(requestto+"at repo");
+module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,name,empname,callback)=>{
+     console.log(empname);
+    profiledetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
+        console.log(result);
+        console.log("inside");
 
-    uploadschema.find({"email":requestto.requestto}).then(result=>{
 
-        var reportmanager=result[0]. reportmanager
-        var nexttoreportmanager=result[0]. immediatereportmanager
-        var hrmanager=result[0]. HRmanager
-        console.log(reportmanager,nexttoreportmanager,hrmanager+"managers")
+     var reportmanager=result. reportingmanager;
+         var nexttoreportmanager=result. nextreportingmanager;
+   var hrmanager=result. hrmanager;
+
+     console.log(reportmanager,nexttoreportmanager,hrmanager+"managers")
         var maillist = [
             reportmanager,
             nexttoreportmanager,
            
           ];
 
-        console.log(result[0].firstname)
+        // console.log(result[0].firstname)
     // callback(null,result);
-    console.log(result);
-
+   
 
 
         leaverequestschema.find({"requestto":{$ne:null}}).then(result=>{
