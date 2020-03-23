@@ -469,7 +469,8 @@ module.exports.addiprocurement=(req,res)=>{
   var email=req.body.email;
   var employeename=req.body.employeename;
   var empname=req.body.empname
-  // console.log(item,description,amount,file,status,astatus,email,employeename+"at service")
+  console.log("inside iprocurement");
+  console.log(item,description,amount,file,status,astatus,email,employeename,empname+"at service")
 
   userRepo.addiprocuremnt({item:item},{description:description},{amount:amount},{file:file},{status:status},{astatus:astatus},{email:email},{employeename:employeename},{empname:empname},(err,data)=>{
     if(data){

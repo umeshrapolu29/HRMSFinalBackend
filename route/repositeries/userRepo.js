@@ -327,7 +327,7 @@ module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email
 
 
 
-    // console.log(item,description,amount,file,status,astatus,email,employeename+"at repo")
+    console.log(item,description,amount,file,status,astatus,email,employeename+"at repo")
     iprocurementschema.find({"email":{$ne:null}}).then(result=>{
         var regid=Object.keys(result).length;
         console.log(regid+"result is");
