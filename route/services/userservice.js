@@ -655,7 +655,7 @@ module.exports.uploadpayslips=((req,res)=>{
   const resume = req.file.originalname;
   var month=req.body.month;
   var year=req.body.year
-  console.log(email,file,month,year,resume+"at service")
+  // console.log(email,file,month,year,resume+"at service")
   userRepo.uploadpayslips({email:email},{file:file},{month:month},{year:year},(err,data)=>{
     if(data){
       res.json({
@@ -663,39 +663,39 @@ module.exports.uploadpayslips=((req,res)=>{
         "data":data
       })
  
-    var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      secure: 'false',
-      port: '25',
-      auth: {
-        user:'sandeep.reddy@zyclyx.com',
-        pass: 'cweaaodfhejidcga'
-      },
-      tls: {
-        rejectUnauthorized: false
-    },
+    // var transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   secure: 'false',
+    //   port: '25',
+    //   auth: {
+    //     user:'sandeep.reddy@zyclyx.com',
+    //     pass: 'cweaaodfhejidcga'
+    //   },
+    //   tls: {
+    //     rejectUnauthorized: false
+    // },
   
-    });
+    // });
   
     
-    var mailOptions = {
-      from: 'sampathkumar0078@gmail.com',
-      to: email,
-      subject: 'Uploaded Payslip',
+  //   var mailOptions = {
+  //     from: 'sampathkumar0078@gmail.com',
+  //     to: email,
+  //     subject: 'Uploaded Payslip',
       
       
-      text: 'Dear '+email+','+'\n'+'Please find the attached payslip for the month of '+month+'-'+year+''+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
-       attachments: [{ filename: resume, content: fs.createReadStream(`./uploads/images/${resume}`) }]
+  //     text: 'Dear '+email+','+'\n'+'Please find the attached payslip for the month of '+month+'-'+year+''+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
+  //      attachments: [{ filename: resume, content: fs.createReadStream(`./uploads/images/${resume}`) }]
       
-  };
-    //console.log(details.title,details.description+"notice details")
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent for Reimbursement status: ' + info.response);
-      }
-    });
+  // };
+  //   //console.log(details.title,details.description+"notice details")
+  //   transporter.sendMail(mailOptions, function(error, info){
+  //     if (error) {
+  //       console.log(error);
+  //     } else {
+  //       console.log('Email sent for Reimbursement status: ' + info.response);
+  //     }
+  //   });
     }
     else{
       res.json({

@@ -461,6 +461,12 @@ module.exports.getallemployeenames=(req,callback)=>{
     })
 }
 module.exports.uploadpayslips=(email,file,month,year,callback)=>{
+    
+    profiledetailsschema.findOne({"empname":email.email}).sort( { rig: -1 } ).then(result=>{
+        console.log(result);
+        var fullname=result.fullname;
+        console.log(fullname+"nameis")
+    
     console.log(email,file,month,year+"at service")
     var reg=new payslipschema({
         email:email.email,
@@ -472,6 +478,40 @@ module.exports.uploadpayslips=(email,file,month,year,callback)=>{
     })
     reg.save().then(result=>{
         callback(null,result);
+        var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      secure: 'false',
+      port: '25',
+      auth: {
+        user:'sandeep.reddy@zyclyx.com',
+        pass: 'cweaaodfhejidcga'
+      },
+      tls: {
+        rejectUnauthorized: false
+    },
+  
+    });
+  
+    
+    var mailOptions = {
+      from: 'sampathkumar0078@gmail.com',
+      to: email,
+      subject: 'Uploaded Payslip',
+      
+      
+      text: 'Dear '+fullname+','+'\n'+'Please find the attached payslip for the month of '+month+'-'+year+''+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
+       attachments: [{ filename: resume, content: fs.createReadStream(`./uploads/images/${resume}`) }]
+      
+  };
+    //console.log(details.title,details.description+"notice details")
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent for Reimbursement status: ' + info.response);
+      }
+    });
+
         console.log(result);
     }).catch(error=>{
         callback(null,error);
@@ -479,6 +519,12 @@ module.exports.uploadpayslips=(email,file,month,year,callback)=>{
     .catch(error=>{
           callback(null,error);
       })
+
+      
+})
+.catch(error=>{
+    callback(null,error)
+})
 
 }
 module.exports.getpayslips=(email,month,year,callback)=>{
