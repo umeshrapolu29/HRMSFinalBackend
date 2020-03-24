@@ -656,7 +656,7 @@ module.exports.uploadpayslips=((req,res)=>{
   var month=req.body.month;
   var year=req.body.year
   // console.log(email,file,month,year,resume+"at service")
-  userRepo.uploadpayslips({email:email},{file:file},{month:month},{year:year},(err,data)=>{
+  userRepo.uploadpayslips({email:email},{file:file},{month:month},{year:year},{resume:resume},(err,data)=>{
     if(data){
       res.json({
         "msg":"get names details",

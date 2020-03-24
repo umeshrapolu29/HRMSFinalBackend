@@ -11,6 +11,7 @@ var attendenceschema=require('../Model/attendenceshema');
 var adminschema=require('../Model/adminschema');
 var educationalschema=require('../Model/educationalschema');
 var bankdetailsschema=require('../Model/bankdetailsschema');
+const fs = require('fs');
 var companydetailsschema=require('../Model/companydetailsschema');
  var personaldetailsschema=require('../Model/personaldetailschema');
   var profiledetailsschema=require('../Model/profiledetailsschema');
@@ -460,14 +461,19 @@ module.exports.getallemployeenames=(req,callback)=>{
         callback(null,error);
     })
 }
-module.exports.uploadpayslips=(email,file,month,year,callback)=>{
+module.exports.uploadpayslips=(email,file,month,year,resume,callback)=>{
     
     profiledetailsschema.findOne({"empname":email.email}).sort( { rig: -1 } ).then(result=>{
         console.log(result);
+        console.log(resume)
         var fullname=result.fullname;
-        console.log(fullname+"nameis")
+        var email1=result.email;
+        var resume1=resume.resume
+        console.log(resume1)
+       
+        console.log(fullname,email1+"nameis")
     
-    console.log(email,file,month,year+"at service")
+    console.log(email,file,month,year,resume+"at service")
     var reg=new payslipschema({
         email:email.email,
         file:file.file,
@@ -477,7 +483,12 @@ module.exports.uploadpayslips=(email,file,month,year,callback)=>{
 
     })
     reg.save().then(result=>{
-        callback(null,result);
+        
+        console.log(result);
+        var month1=result.month;
+        var year1=result.year;
+        console.log(month1,year1+"month is")
+    
         var transporter = nodemailer.createTransport({
       service: 'gmail',
       secure: 'false',
@@ -495,15 +506,17 @@ module.exports.uploadpayslips=(email,file,month,year,callback)=>{
     
     var mailOptions = {
       from: 'sampathkumar0078@gmail.com',
-      to: email,
+      to: email1,
       subject: 'Uploaded Payslip',
+     
       
       
-      text: 'Dear '+fullname+','+'\n'+'Please find the attached payslip for the month of '+month+'-'+year+''+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
-       attachments: [{ filename: resume, content: fs.createReadStream(`./uploads/images/${resume}`) }]
+      text: 'Dear '+fullname+','+'\n'+'Please find the attached payslip for the month of '+month1+'-'+year1+''+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
+      attachments: [{ filename: resume1, content: fs.createReadStream(`./uploads/images/${resume1}`) }]
       
   };
-    //console.log(details.title,details.description+"notice details")
+  
+//     //console.log(details.title,details.description+"notice details")
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         console.log(error);
@@ -511,8 +524,46 @@ module.exports.uploadpayslips=(email,file,month,year,callback)=>{
         console.log('Email sent for Reimbursement status: ' + info.response);
       }
     });
+    callback(null,result);
 
-        console.log(result);
+
+
+
+    
+    // var transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //       user:'sandeep.reddy@zyclyx.com',
+    //       pass: 'cweaaodfhejidcga'
+    //     }
+    //   });
+      
+    //   var mailOptions = {
+    //     from: 'sampathkumar0078@gmail.com',
+    //     to: email1,
+    //     // cc:hrmanager,
+    //     subject:'Reimbursement request from '+email+',',
+        
+        
+    //     text: 'Dear manager'+('\n')+'Please approve me the reimbursement request for the item is '+email+' for the purpose of '+email+' and the amount of this item is '+email+'.'+('\n')+'Thanks and regards.'+('\n')+email+'.'
+        
+    // };
+    //   //console.log(details.title,details.description+"notice details")
+    //   transporter.sendMail(mailOptions, function(error, info){
+    //     if (error) {
+    //       console.log(error);
+    //     } else {
+    //       console.log('Email sent for update leave status111: ' + info.response);
+    //       res.send("success")
+    //     }
+    //   });
+
+
+
+
+      
+
+       
     }).catch(error=>{
         callback(null,error);
     })
