@@ -158,6 +158,19 @@ var storage = multer.diskStorage({
     var todate=req.body.todate;
     var name=req.body.name;
     console.log(requestto+"at service")
+    let userDate = new Date(todate) ;
+    let date = userDate.getDate()
+    let month = userDate.getMonth()
+    let year = userDate.getFullYear()
+    var todate1 = date+"_" + month + "_" + year
+
+    let userDate1 = new Date(fromdate) ;
+    console.log(date,month,year+"date is");
+    let date1 = userDate1.getDate()
+    let month1 = userDate1.getMonth()
+    let year1 = userDate1.getFullYear()
+    var fromdate = date1+"_" + month1 + "_" + year1
+    console.log(fromdate);
     // console.log(user,password+"user password");
     // console.log(reason,reqtype,requestto,fromdate,todate,emailto1,name+"at service");
   //   var transporter = nodemailer.createTransport({
@@ -188,7 +201,7 @@ var storage = multer.diskStorage({
 
 
 
-    userRepo.leaverequest({reason:reason},{reqtype:reqtype},{requestto:requestto},{status:status},{fromdate:fromdate},{todate:todate},{name:name},{empname:empname},(err,data)=>{
+    userRepo.leaverequest({reason:reason},{reqtype:reqtype},{requestto:requestto},{status:status},{fromdate:fromdate},{todate1:todate1},{name:name},{empname:empname},(err,data)=>{
       res.json({
         "msg":"leave request data inserted",
         "data":data

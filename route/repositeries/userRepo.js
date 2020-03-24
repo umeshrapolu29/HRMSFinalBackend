@@ -88,7 +88,7 @@ module.exports.getuserdata=(email,callback)=>{
 
 }
 // Leave Request.........................
-module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,name,empname,callback)=>{
+module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate1,name,empname,callback)=>{
      console.log(empname);
     profiledetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
         console.log(result);
@@ -120,7 +120,7 @@ module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate,nam
         requestto:requestto.requestto,
         status:status.status,
         fromdate:fromdate.fromdate,
-        todate:todate.todate,
+        todate:todate1.todate1,
         name:name.name,
         regid:regid
        
