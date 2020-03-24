@@ -162,14 +162,14 @@ var storage = multer.diskStorage({
     let date = userDate.getDate()
     let month = userDate.getMonth()
     let year = userDate.getFullYear()
-    var todate1 = date+"_" + month + "_" + year
+    var todate1 = date+"-" + month + "-" + year
 
     let userDate1 = new Date(fromdate) ;
     console.log(date,month,year+"date is");
     let date1 = userDate1.getDate()
     let month1 = userDate1.getMonth()
     let year1 = userDate1.getFullYear()
-    var fromdate = date1+"_" + month1 + "_" + year1
+    var fromdate = date1+"-" + month1 + "-" + year1
     console.log(fromdate);
     // console.log(user,password+"user password");
     // console.log(reason,reqtype,requestto,fromdate,todate,emailto1,name+"at service");
