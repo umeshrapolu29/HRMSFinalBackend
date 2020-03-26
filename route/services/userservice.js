@@ -1229,10 +1229,12 @@ module.exports.uploadpayslips=((req,res)=>{
         var reportingmanager=req.body.reportingmanager;
         var nextreportingmanager=req.body.nextreportingmanager; 
         var hrmanager=req.body.hrmanager
+        var id=req.body.id
+        console.log(id,reportingmanager+"at service");
         
         // console.log(empname,primaryemailid,secondaryemailid,primaryphone,secondaryphone,gaurdain,gaurdainnumber+"at service")
-        console.log(fullname,DOB,DOJ,gender,email,phone,reportingmanager,nextreportingmanager,hrmanager+"at service")
-        userRepo.profiledetails({empname:empname},{fullname:fullname},{DOB:DOB},{DOJ:DOJ},{gender:gender},{email:email},{phone:phone},{reportingmanager:reportingmanager},{nextreportingmanager:nextreportingmanager},{hrmanager:hrmanager},(err,data)=>{
+       console.log(fullname,DOB,DOJ,gender,email,phone,reportingmanager,nextreportingmanager,hrmanager+"at service")
+         userRepo.profiledetails({empname:empname},{fullname:fullname},{DOB:DOB},{DOJ:DOJ},{gender:gender},{email:email},{phone:phone},{reportingmanager:reportingmanager},{nextreportingmanager:nextreportingmanager},{hrmanager:hrmanager},{id:id},(err,data)=>{
           if(data){
             res.json({
               "msg":"data inserted",

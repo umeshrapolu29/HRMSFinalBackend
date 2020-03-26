@@ -989,35 +989,42 @@ module.exports.getpersonaldetails=(empname,callback)=>{
 // })
 }
 
-module.exports.profiledetails=(empname,fullname,DOB,DOJ,gender,email,phone,reportingmanager,nextreportingmanager,hrmanager,callback)=>{
-     console.log(empname,fullname,DOB,DOJ+"at repo")
-    profiledetailsschema.find({"empname":{$ne:null}}).then(result=>{
-        var regid=Object.keys(result).length;
-        console.log(regid+"result is");
-   var reg=new profiledetailsschema({
-    empname:empname.empname,
-    fullname:fullname.fullname,
-    DOB:DOB.DOB,
-    DOJ:DOJ.DOJ,
-    gender:gender.gender,
-    email:email.email,
-    phone:phone.phone,
-    reportingmanager:reportingmanager.reportingmanager,
-    nextreportingmanager:nextreportingmanager.nextreportingmanager,
-    hrmanager:hrmanager.hrmanager,
-    rig:regid
-   })
-    reg.save().then(result=>{
-        callback(null,result);
-        console.log(result)
-    }).catch(error=>{
+module.exports.profiledetails=(empname,fullname,DOB,DOJ,gender,email,phone,reportingmanager,nextreportingmanager,hrmanager,id,callback)=>{
+      console.log(fullname,DOB,DOJ+"at repo")
+    // profiledetailsschema.find({"empname":{$ne:null}}).then(result=>{
+    //     var regid=Object.keys(result).length;
+    //     console.log(regid+"result is");
+    console.log(reportingmanager+"is");
+        uploadschema.updateOne({"_id":id.id},{$set:{reportmanager:reportingmanager.reportingmanager,firstname:fullname.fullname,email:email.email,DOJ:DOJ.DOJ,DOB:DOB.DOB,gender:gender.gender,phonenumber:phone.phone,immediatereportmanager:nextreportingmanager.nextreportingmanager,HRmanager:hrmanager.hrmanager
+        }}).then(result=>{
+            console.log(result)
+            callback(null,result);
+//    var reg=new profiledetailsschema({
+
+//     empname:empname.empname,
+//     fullname:fullname.fullname,
+//     DOB:DOB.DOB,
+//     DOJ:DOJ.DOJ,
+//     gender:gender.gender,
+//     email:email.email,
+//     phone:phone.phone,
+//     reportingmanager:reportingmanager.reportingmanager,
+//     nextreportingmanager:nextreportingmanager.nextreportingmanager,
+//     hrmanager:hrmanager.hrmanager,
+//     rig:regid
+    })
+    // reg.save().then(result=>{
+    //     callback(null,result);
+    //     console.log(result)
+    // })
+    .catch(error=>{
         console.log("error")
         callback(null,error);
         
     })
-}).catch(error=>{
-    callback(null,error);
-})
+// }).catch(error=>{
+//     callback(null,error);
+// })
 }
 
 module.exports.getprofiledetails=(empname,callback)=>{
