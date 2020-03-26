@@ -313,12 +313,12 @@ module.exports.viewnotice=(req,callback)=>{
 module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email,employeename,empname,callback)=>{
     console.log(empname+"empname")
 
-    profiledetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
+    uploadschema.findOne({"email":requestto.requestto}).then(result=>{
 
          console.log(result);
-        var reportmanager=result. reportingmanager;
-        var nexttoreportmanager=result. nextreportingmanager;
-        var hrmanager=result. hrmanager;
+         var reportmanager=result. reportmanager;
+         var nexttoreportmanager=result. immediatereportmanager;
+   var hrmanager=result. HRmanager;
         var maillist = [
             reportmanager,
             nexttoreportmanager,
