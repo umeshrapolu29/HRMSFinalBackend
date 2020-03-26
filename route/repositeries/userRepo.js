@@ -463,11 +463,11 @@ module.exports.getallemployeenames=(req,callback)=>{
 }
 module.exports.uploadpayslips=(email,file,month,year,resume,callback)=>{
     
-    profiledetailsschema.findOne({"empname":email.email}).sort( { rig: -1 } ).then(result=>{
+    uploadschema.findOne({"email":email.email}).then(result=>{
         console.log(result);
         console.log(resume)
-        var fullname=result.fullname;
-        var email1=result.email;
+         var fullname=result.firstname;
+         var email1=result.email;
         var resume1=resume.resume
         console.log(resume1)
        
