@@ -91,14 +91,14 @@ module.exports.getuserdata=(email,callback)=>{
 // Leave Request.........................
 module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate1,name,empname,callback)=>{
      console.log(empname);
-    profiledetailsschema.findOne({"empname":empname.empname}).sort( { rig: -1 } ).then(result=>{
+     uploadschema.findOne({"email":requestto.requestto}).then(result=>{
         console.log(result);
         console.log("inside");
 
 
-     var reportmanager=result. reportingmanager;
-         var nexttoreportmanager=result. nextreportingmanager;
-   var hrmanager=result. hrmanager;
+     var reportmanager=result. reportmanager;
+         var nexttoreportmanager=result. immediatereportmanager;
+   var hrmanager=result. HRmanager;
 
      console.log(reportmanager,nexttoreportmanager,hrmanager+"managers")
         var maillist = [

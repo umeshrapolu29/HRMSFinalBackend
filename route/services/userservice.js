@@ -157,7 +157,7 @@ var storage = multer.diskStorage({
     var fromdate=req.body.fromdate;
     var todate=req.body.todate;
     var name=req.body.name;
-    console.log(requestto+"at service")
+    console.log(requestto,reqtype+"at service")
     let userDate = new Date(todate) ;
     let date = userDate.getDate()
     let month = userDate.getMonth()
