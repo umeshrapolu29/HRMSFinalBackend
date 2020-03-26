@@ -73,8 +73,8 @@ var storage = multer.diskStorage({
           var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-              user:'sandeep.reddy@zyclyx.com',
-              pass: 'cweaaodfhejidcga'
+              user:'zyclyx.operations@gmail.com',
+              pass: 'olcaaowzmktojqmg'
             }
           });
           
@@ -238,8 +238,8 @@ var storage = multer.diskStorage({
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user:'sandeep.reddy@zyclyx.com',
-          pass: 'cweaaodfhejidcga'
+          user:'zyclyx.operations@gmail.com',
+          pass: 'olcaaowzmktojqmg'
         }
       });
       
@@ -271,8 +271,8 @@ var storage = multer.diskStorage({
         var transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-            user:'sandeep.reddy@zyclyx.com',
-            pass: 'cweaaodfhejidcga'
+            user:'zyclyx.operations@gmail.com',
+            pass: 'olcaaowzmktojqmg'
           }
         });
         
@@ -560,8 +560,8 @@ module.exports.updatestatusiprocuremnt=((req,res)=>{
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user:'sandeep.reddy@zyclyx.com',
-          pass: 'cweaaodfhejidcga'
+          user:'zyclyx.operations@gmail.com',
+          pass: 'olcaaowzmktojqmg'
         }
       });
       

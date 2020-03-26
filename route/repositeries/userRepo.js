@@ -365,8 +365,8 @@ module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email
                var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user:'sandeep.reddy@zyclyx.com',
-          pass: 'cweaaodfhejidcga'
+            user:'zyclyx.operations@gmail.com',
+            pass: 'olcaaowzmktojqmg'
         }
       });
       
@@ -494,8 +494,8 @@ module.exports.uploadpayslips=(email,file,month,year,resume,callback)=>{
       secure: 'false',
       port: '25',
       auth: {
-        user:'sandeep.reddy@zyclyx.com',
-        pass: 'cweaaodfhejidcga'
+        user:'zyclyx.operations@gmail.com',
+        pass: 'olcaaowzmktojqmg'
       },
       tls: {
         rejectUnauthorized: false
