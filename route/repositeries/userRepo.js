@@ -313,7 +313,7 @@ module.exports.viewnotice=(req,callback)=>{
 module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email,employeename,empname,callback)=>{
     console.log(empname+"empname")
 
-    uploadschema.findOne({"email":requestto.requestto}).then(result=>{
+    uploadschema.findOne({"email":email.email}).then(result=>{
 
          console.log(result);
          var reportmanager=result. reportmanager;
