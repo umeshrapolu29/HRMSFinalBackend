@@ -401,8 +401,8 @@ module.exports.addnotice=((req,res)=>{
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user:'sandeep.reddy@zyclyx.com',
-          pass: 'cweaaodfhejidcga'
+          user:'zyclyx.operations@gmail.com',
+          pass: 'olcaaowzmktojqmg'
         }
       });
       
