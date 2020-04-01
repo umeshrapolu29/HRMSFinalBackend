@@ -925,8 +925,8 @@ module.exports.uploadpayslips=((req,res)=>{
       var  smtptransport=nodemailer.createTransport({
         service:'gmail',
         auth:{
-          user:'sandeep.reddy@zyclyx.com',
-          pass: 'cweaaodfhejidcga'
+          user:'zyclyx.operations@gmail.com',
+          pass: 'olcaaowzmktojqmg'
         }
     });
     var mailOption={
