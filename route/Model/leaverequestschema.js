@@ -9,6 +9,8 @@ var leaverequestschema=leaverequestschema({
     fromdate:{type:String},
     todate:{type:String},
     name:{type:String},
+    month:{type:String},
+    year:{type:String},
     regid:{type:String},
 })
 module.exports=mongoose.model('leaverequestschema',leaverequestschema)

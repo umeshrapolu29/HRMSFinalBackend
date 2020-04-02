@@ -201,7 +201,7 @@ var storage = multer.diskStorage({
 
 
 
-    userRepo.leaverequest({reason:reason},{reqtype:reqtype},{requestto:requestto},{status:status},{fromdate:fromdate},{todate1:todate1},{name:name},{empname:empname},(err,data)=>{
+    userRepo.leaverequest({reason:reason},{reqtype:reqtype},{requestto:requestto},{status:status},{fromdate:fromdate},{todate1:todate1},{name:name},{month:month},{year:year},{empname:empname},(err,data)=>{
       res.json({
         "msg":"leave request data inserted",
         "data":data
@@ -1270,3 +1270,22 @@ module.exports.uploadpayslips=((req,res)=>{
           }
         })
       })
+      module.exports.leavetakendata=(req,res)=>{
+        var month=req.body.month 
+        var year=req.body.year
+        console.log(month,year+"at service");
+        userRepo.leavetakendata({month:month},{year:year},(err,data)=>{
+          if(data){
+            res.json({
+              "msg":"leavedata data",
+              "data":data
+            })
+          }
+          else{
+            res.json({
+              "msg":"not getting data",
+              "data":data
+            })
+          }
+        })
+      }

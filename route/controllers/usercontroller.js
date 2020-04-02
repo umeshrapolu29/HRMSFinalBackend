@@ -147,4 +147,7 @@ route.post('/editprofiledetails',upload.single('file'),(req,res)=>{
 route.post('/getprofiledetails',upload.single('file'),(req,res)=>{
   return userservice.getprofiledetails(req,res);
 })
+route.post('/leavetakendata',upload.single(''),(req,res)=>{
+  return userservice.leavetakendata(req,res);
+})
  module.exports=route;

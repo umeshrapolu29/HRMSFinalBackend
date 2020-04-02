@@ -89,7 +89,7 @@ module.exports.getuserdata=(email,callback)=>{
 
 }
 // Leave Request.........................
-module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate1,name,empname,callback)=>{
+module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate1,name,month,year,empname,callback)=>{
      console.log(empname);
      uploadschema.findOne({"email":requestto.requestto}).then(result=>{
         console.log(result);
@@ -123,6 +123,8 @@ module.exports.leaverequest=(reason,reqtype,requestto,status,fromdate,todate1,na
         fromdate:fromdate.fromdate,
         todate:todate1.todate1,
         name:name.name,
+        month:month.month,
+        year:year.year,
         regid:regid
        
     })
@@ -1041,4 +1043,15 @@ module.exports.getprofiledetails=(empname,callback)=>{
 // }).catch(error=>{
 //     callback(null,error);
 // })
+}
+module.exports.leavetakendata=(month,year,callback)=>{
+    console.log(month,year+"at repo")
+    leaverequestschema.find({'status':{$eq:"Approved"},"month":month.month,"year":year.year}).then(result=>{
+        callback(null,result);
+        console.log(result);
+
+    }).catch(error=>{
+        callback(null,error);
+    })
+
 }
