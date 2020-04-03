@@ -509,7 +509,7 @@ module.exports.uploadpayslips=(email,file,month,year,resume,callback)=>{
     var mailOptions = {
       from: 'sampathkumar0078@gmail.com',
       to: email1,
-      subject: 'Uploaded Payslip',
+      subject: 'Payslip',
      
       
       
