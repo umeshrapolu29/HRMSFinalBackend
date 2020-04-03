@@ -991,13 +991,13 @@ module.exports.getpersonaldetails=(empname,callback)=>{
 // })
 }
 
-module.exports.profiledetails=(empname,fullname,DOB,DOJ,gender,email,phone,reportingmanager,nextreportingmanager,hrmanager,id,callback)=>{
+module.exports.profiledetails=(empname,fullname,DOB,DOJ,gender,email,phone,reportingmanager,nextreportingmanager,hrmanager,id,fullid,callback)=>{
       console.log(fullname,DOB,DOJ+"at repo")
     // profiledetailsschema.find({"empname":{$ne:null}}).then(result=>{
     //     var regid=Object.keys(result).length;
     //     console.log(regid+"result is");
     console.log(reportingmanager+"is");
-        uploadschema.updateOne({"_id":id.id},{$set:{reportmanager:reportingmanager.reportingmanager,firstname:fullname.fullname,email:email.email,DOJ:DOJ.DOJ,DOB:DOB.DOB,gender:gender.gender,phonenumber:phone.phone,immediatereportmanager:nextreportingmanager.nextreportingmanager,HRmanager:hrmanager.hrmanager
+        uploadschema.updateOne({"_id":id.id},{$set:{reportmanager:reportingmanager.reportingmanager,firstname:fullname.fullname,email:email.email,DOJ:DOJ.DOJ,DOB:DOB.DOB,gender:gender.gender,phonenumber:phone.phone,fullid:fullid.fullid,immediatereportmanager:nextreportingmanager.nextreportingmanager,HRmanager:hrmanager.hrmanager,
         }}).then(result=>{
             console.log(result)
             callback(null,result);

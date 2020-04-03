@@ -13,6 +13,7 @@ var profiledetailsschema=profiledetailsschema({
     reportingmanager:{type:String},
     nextreportingmanager:{type:String},
     hrmanager:{type:String},
+    fullid:{type:String},
     rig:{type:Number},
     
 
