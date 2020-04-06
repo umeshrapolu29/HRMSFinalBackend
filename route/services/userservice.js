@@ -383,6 +383,7 @@ module.exports.addnotice=((req,res)=>{
   var date=req.body.date;
   var title=req.body.title;
   var description=req.body.description;
+  console.log(date,title,description+"at service")
   if (req.file === undefined){
     var file= 'https://hrmsbackend.herokuapp.com/images/'+'logo-2.jpg';
      
@@ -398,33 +399,33 @@ module.exports.addnotice=((req,res)=>{
         "msg":"addnotice data",
         "data":data
       })
-      var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user:'zyclyx.operations@gmail.com',
-          pass: 'olcaaowzmktojqmg'
-        }
-      });
+    //   var transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //       user:'zyclyx.operations@gmail.com',
+    //       pass: 'olcaaowzmktojqmg'
+    //     }
+    //   });
       
-      var mailOptions = {
-        from: 'sampathkumar0078@gmail.com',
-        to: 'umeshrapolu29@gmail.com',
-        subject: 'New Notification-'+title,
+    //   var mailOptions = {
+    //     from: 'sampathkumar0078@gmail.com',
+    //     to: 'umeshrapolu29@gmail.com',
+    //     subject: 'New Notification-'+title,
         
         
-        text: 'Dears, '+('\n\n')+'You have a new notification..!'+('\n\n')+description+('\n\n')+'Thanks and regards.'+('\n\n')+' HR Operations'+'.',
+    //     text: 'Dears, '+('\n\n')+'You have a new notification..!'+('\n\n')+description+('\n\n')+'Thanks and regards.'+('\n\n')+' HR Operations'+'.',
          
         
-    };
-      //console.log(details.title,details.description+"notice details")
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent for update leave status: ' + info.response);
-          res.send("success")
-        }
-      });
+    // };
+    //   //console.log(details.title,details.description+"notice details")
+    //   transporter.sendMail(mailOptions, function(error, info){
+    //     if (error) {
+    //       console.log(error);
+    //     } else {
+    //       console.log('Email sent for update leave status: ' + info.response);
+    //       res.send("success")
+    //     }
+    //   });
     }
     else{
       res.json({
@@ -1281,6 +1282,23 @@ module.exports.uploadpayslips=((req,res)=>{
             res.json({
               "msg":"leavedata data",
               "data":data
+            })
+          }
+          else{
+            res.json({
+              "msg":"not getting data",
+              "data":data
+            })
+          }
+        })
+      }
+      module.exports.deleteholiday=(req,res)=>{
+        var id=req.body.id
+        console.log(id+"at service")
+        userRepo.deleteholiday({id:id},(err,data)=>{
+          if(data){
+            res.json({
+              "msg":"delete holiday"
             })
           }
           else{

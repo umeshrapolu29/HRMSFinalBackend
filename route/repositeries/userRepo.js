@@ -256,11 +256,12 @@ module.exports.viewholiday=(holidaytype,callback)=>{
     })
 }
 module.exports.addnotice=(date,title,description,file,callback)=>{
-    uploadschema.find({}).then(result=>{
-        callback(null,result);
-        console.log(result.data[0].email)
+    console.log(date,title,description+"at service")
+    // uploadschema.find({}).then(result=>{
+    //     callback(null,result);
+    //     console.log(result.data[0].email)
     
-    var regid=1;
+     var regid=1;
 
 
 
@@ -286,10 +287,10 @@ module.exports.addnotice=(date,title,description,file,callback)=>{
 
 
 })
-})
-.catch(error=>{
-    callback(null,error)
-})
+
+// .catch(error=>{
+//     callback(null,error)
+// })
 
 
 
@@ -1050,6 +1051,17 @@ module.exports.leavetakendata=(month,year,callback)=>{
         callback(null,result);
         console.log(result);
 
+    }).catch(error=>{
+        callback(null,error);
+    })
+
+}
+module.exports.deleteholiday=(id,callback)=>{
+    console.log(id+"at repo")
+    
+    holidayschema.remove({"_id":id.id}).then(result=>{
+        callback(null,result);
+        console.log(result);
     }).catch(error=>{
         callback(null,error);
     })

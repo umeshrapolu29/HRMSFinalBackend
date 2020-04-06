@@ -150,4 +150,8 @@ route.post('/getprofiledetails',upload.single('file'),(req,res)=>{
 route.post('/leavetakendata',upload.single(''),(req,res)=>{
   return userservice.leavetakendata(req,res);
 })
+route.post('/deleteholiday',upload.single('file'),(req,res)=>{
+  return userservice.deleteholiday(req,res);
+}
+)
  module.exports=route;
