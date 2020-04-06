@@ -331,11 +331,7 @@ module.exports.addholiday=((req,res)=>{
   // var day = date.getDay();
   // var mon = date.getMonth() + 1;
   // console.log(year,mon,day+"day is")
-  let userDate = new Date(date) ;
-    let date11 = userDate.getDate()
-    let month = userDate.getMonth()
-    let year = userDate.getFullYear()
-    var date = date11+"-" + month + "-" + year
+
   var date1 = new Date(date);
   console.log(date1+"date is")
 console.log(date1.toLocaleString('en-US', {
@@ -345,6 +341,12 @@ console.log(date1.toLocaleString('en-US', {
     var dayofname=date1.toLocaleString('en-US', {
       weekday: 'long'})
       console.log(dayofname+"name is")
+
+      let userDate = new Date(date) ;
+      let date11 = userDate.getDate()
+      let month = userDate.getMonth()
+      let year = userDate.getFullYear()
+      var date = date11+"-" + month + "-" + year
 
   console.log(date,reason,holidaytype,dayofweek+"at servive")
 
