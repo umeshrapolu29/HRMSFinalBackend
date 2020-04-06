@@ -485,6 +485,7 @@ module.exports.addiprocurement=(req,res)=>{
   var description=req.body.description;
   var amount=req.body.amount;
  var file= 'https://hrmsbackend.herokuapp.com/images/'+ req.file.originalname;
+ const resume = req.file.originalname;
   var status="false";
   var astatus="Not yet approved";
   var email=req.body.email;
@@ -493,7 +494,7 @@ module.exports.addiprocurement=(req,res)=>{
   console.log("inside iprocurement");
   console.log(item,description,amount,file,status,astatus,email,employeename,empname+"at service")
 
-  userRepo.addiprocuremnt({item:item},{description:description},{amount:amount},{file:file},{status:status},{astatus:astatus},{email:email},{employeename:employeename},{empname:empname},(err,data)=>{
+  userRepo.addiprocuremnt({item:item},{description:description},{amount:amount},{file:file},{status:status},{astatus:astatus},{email:email},{employeename:employeename},{empname:empname},{resume:resume},(err,data)=>{
     if(data){
       res.json({
         "msg":"added Iprocumerent",

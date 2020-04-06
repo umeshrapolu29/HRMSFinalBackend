@@ -313,10 +313,12 @@ module.exports.viewnotice=(req,callback)=>{
     })
 }
 
-module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email,employeename,empname,callback)=>{
-    console.log(empname+"empname")
+module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email,employeename,empname,resume,callback)=>{
+    console.log(empname,resume+"empname")
 
     uploadschema.findOne({"email":email.email}).then(result=>{
+        var resume1=resume.resume
+        console.log(resume1)
 
          console.log(result);
          var reportmanager=result. reportmanager;
@@ -381,7 +383,7 @@ module.exports.addiprocuremnt=(item,description,amount,file,status,astatus,email
         
         
         text: 'Dear manager'+('\n')+'Please approve me the reimbursement request for the item is '+item1+' for the purpose of '+description1+' and the amount of this item is '+amount1+'.'+('\n')+'Thanks and regards.'+('\n')+empname+'.'
-        
+       , attachments: [{ filename: resume1, content: fs.createReadStream(`./uploads/images/${resume1}`) }]
     };
       //console.log(details.title,details.description+"notice details")
       transporter.sendMail(mailOptions, function(error, info){
