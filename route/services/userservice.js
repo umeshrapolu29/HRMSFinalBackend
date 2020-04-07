@@ -394,8 +394,8 @@ module.exports.addnotice=((req,res)=>{
     let date11 = userDate.getDate()
     let month = userDate.getMonth()
     let year = userDate.getFullYear()
-    var todate1 = date11+"-" + month + "-" + year
-  console.log(date,title,description+"at service")
+    var changedate = date11+"-" + month + "-" + year
+  console.log(date,changedate,title,description+"at service")
   if (req.file === undefined){
     var file= 'https://hrmsbackend.herokuapp.com/images/'+'logo-2.jpg';
      
@@ -405,7 +405,7 @@ module.exports.addnotice=((req,res)=>{
 
    }
   // console.log(date,title,description,file+"at service");
-  userRepo.addnotice({date:date},{title:title},{description:description},{file:file},(err,data)=>{
+  userRepo.addnotice({changedate:changedate},{title:title},{description:description},{file:file},(err,data)=>{
     if(data){
       res.json({
         "msg":"addnotice data",

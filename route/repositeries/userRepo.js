@@ -255,8 +255,8 @@ module.exports.viewholiday=(holidaytype,callback)=>{
         callback(null,error);
     })
 }
-module.exports.addnotice=(date,title,description,file,callback)=>{
-    console.log(date,title,description+"at service")
+module.exports.addnotice=(changedate,title,description,file,callback)=>{
+    console.log(changedate,title,description,+"at repo")
     // uploadschema.find({}).then(result=>{
     //     callback(null,result);
     //     console.log(result.data[0].email)
@@ -269,7 +269,7 @@ module.exports.addnotice=(date,title,description,file,callback)=>{
          regid=regid+Object.keys(result).length;
         
      var reg=new noticeboardschema({
-        date:date.date,
+        date:changedate.changedate,
         title:title.title,
         description:description.description,
         file:file.file,
