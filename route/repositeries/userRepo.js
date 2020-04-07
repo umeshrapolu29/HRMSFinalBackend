@@ -1107,7 +1107,7 @@ module.exports.attendence=(name,date,reason,status,email,callback)=>{
            
             
             
-            text: 'Dear '+name.name+', Attendence Status is s'+ status.status+'on date is '+date.date+'\n'+' '+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
+            text: 'Dear '+name.name+', Attendence Status is '+ status.status+' date is '+date.date+'\n'+' '+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
           
             
         };

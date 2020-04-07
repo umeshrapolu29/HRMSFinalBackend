@@ -161,6 +161,7 @@ var storage = multer.diskStorage({
     let userDate = new Date(todate) ;
     let date = userDate.getDate()
     let month = userDate.getMonth()
+    month=month+1;
     let year = userDate.getFullYear()
     var todate1 = date+"-" + month + "-" + year
 
@@ -168,6 +169,7 @@ var storage = multer.diskStorage({
     console.log(date,month,year+"date is");
     let date1 = userDate1.getDate()
     let month1 = userDate1.getMonth()
+    month1=month1+1;
     let year1 = userDate1.getFullYear()
     var fromdate = date1+"-" + month1 + "-" + year1
     console.log(fromdate);
@@ -345,6 +347,7 @@ console.log(date1.toLocaleString('en-US', {
       let userDate = new Date(date) ;
       let date11 = userDate.getDate()
       let month = userDate.getMonth()
+      month=month+1;
       let year = userDate.getFullYear()
       var date = date11+"-" + month + "-" + year
 
@@ -393,6 +396,7 @@ module.exports.addnotice=((req,res)=>{
   let userDate = new Date(date) ;
     let date11 = userDate.getDate()
     let month = userDate.getMonth()
+    month=month+1;
     let year = userDate.getFullYear()
     var changedate = date11+"-" + month + "-" + year
   console.log(date,changedate,title,description+"at service")
@@ -1333,6 +1337,7 @@ module.exports.uploadpayslips=((req,res)=>{
         let userDate = new Date(date1) ;
         let date11 = userDate.getDate()
         let month = userDate.getMonth()
+        month=month+1;
         let year = userDate.getFullYear()
         var date = date11+"-" + month + "-" + year
         console.log(date);
