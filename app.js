@@ -13,7 +13,7 @@ const password = process.env.PASSWORD;
  const PORT = process.env.PORT || 3001;
 var server = app.listen(PORT)
 app.use(express.static(path.join(__dirname, 'uploads')));
-app.use("/public", express.static('public'))
+app.use("/public", express.static('./public'))
 
 var bodyparser=require('body-parser');
 app.use(express.static(__dirname+'/uploads'))
