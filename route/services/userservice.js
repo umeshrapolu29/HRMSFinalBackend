@@ -1322,3 +1322,36 @@ module.exports.uploadpayslips=((req,res)=>{
           }
         })
       }
+
+      module.exports.attendence=(req,res)=>{
+        var name=req.body.name;
+       
+        var reason=req.body.reason;
+        var status=req.body.status;
+        var email=req.body.email
+        var date1=new Date();
+        let userDate = new Date(date1) ;
+        let date11 = userDate.getDate()
+        let month = userDate.getMonth()
+        let year = userDate.getFullYear()
+        var date = date11+"-" + month + "-" + year
+        console.log(date);
+       
+        console.log(date1||'yyyy-MM-dd');
+        
+        console.log(name,date,reason,status+"at service")
+        userRepo.attendence({name:name},{date:date},{reason:reason},{status:status},{email:email},(err,data)=>{
+          if(data){
+            res.json({
+              "msg":"attendence added",
+              "data":data
+            })
+          }
+          else{
+            res.json({
+              "msg":"not getting data",
+              "data":data
+            }) 
+          }
+        })
+      }

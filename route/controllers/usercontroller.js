@@ -154,5 +154,8 @@ route.post('/deleteholiday',upload.single('file'),(req,res)=>{
   return userservice.deleteholiday(req,res);
 }
 )
-
+route.post('/attendence',upload.single('file'),(req,res)=>{
+  return userservice.attendence(req,res);
+}
+)
  module.exports=route;

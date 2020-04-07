@@ -15,6 +15,7 @@ const fs = require('fs');
 var companydetailsschema=require('../Model/companydetailsschema');
  var personaldetailsschema=require('../Model/personaldetailschema');
   var profiledetailsschema=require('../Model/profiledetailsschema');
+  var attendenceschema=require('../Model/attendenceshema');
   
 
 module.exports.upload=(firstname,lastname, email,password,file,DOJ,phonenumber,gender,DOB,resgination,reportmanager,nextimmediatemanager,hrmanager,callback)=>{
@@ -1062,6 +1063,63 @@ module.exports.deleteholiday=(id,callback)=>{
     console.log(id+"at repo")
     
     holidayschema.remove({"_id":id.id}).then(result=>{
+        callback(null,result);
+        console.log(result);
+    }).catch(error=>{
+        callback(null,error);
+    })
+
+}
+module.exports.attendence=(name,date,reason,status,email,callback)=>{
+    console.log(name,date,reason,status,email+"at repo")
+    
+    var reg=new attendenceschema({
+        name:name.name,
+        date:date.date,
+        reason:reason.reason,
+        status:status.status,
+        email:email.email
+        
+
+      
+       
+    })
+    reg.save().then(result=>{
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            secure: 'false',
+            port: '25',
+            auth: {
+              user:'zyclyx.operations@gmail.com',
+              pass: 'olcaaowzmktojqmg'
+            },
+            tls: {
+              rejectUnauthorized: false
+          },
+        
+          });
+        
+          
+          var mailOptions = {
+            from: 'sampathkumar0078@gmail.com',
+            to:email.email,
+            subject: 'Attendence Status',
+           
+            
+            
+            text: 'Dear '+name.name+', Attendence Status is s'+ status.status+'on date is '+date.date+'\n'+' '+'\n'+'Thanks and regards.'+('\n')+'HR Operations'+'.',
+          
+            
+        };
+        
+      //     //console.log(details.title,details.description+"notice details")
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent for Reimbursement status: ' + info.response);
+            }
+          });
         callback(null,result);
         console.log(result);
     }).catch(error=>{
