@@ -390,6 +390,11 @@ module.exports.addnotice=((req,res)=>{
   var date=req.body.date;
   var title=req.body.title;
   var description=req.body.description;
+  let userDate = new Date(date) ;
+    let date11 = userDate.getDate()
+    let month = userDate.getMonth()
+    let year = userDate.getFullYear()
+    var todate1 = date11+"-" + month + "-" + year
   console.log(date,title,description+"at service")
   if (req.file === undefined){
     var file= 'https://hrmsbackend.herokuapp.com/images/'+'logo-2.jpg';
